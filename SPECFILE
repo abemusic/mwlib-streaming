@@ -1,0 +1,7 @@
+title: mwlib stuff
+description: mwlib stuff
+root_path: mwlib
+components:
+  - title: mwlib
+    description: mwlib
+    sls_path: mwlib
