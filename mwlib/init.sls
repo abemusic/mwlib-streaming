@@ -1,5 +1,4 @@
-{% set apache = salt['grains.filter_by']({
-
+{% set mwlib = salt['grains.filter_by']({
   'Debian': {
     'libxml': 'libxml2-dev',
     'libxslt': 'libxslt-dev',
@@ -14,5 +13,18 @@ deps:
   pkg:
     - installed
     - pkgs:
-      - {{ libxml }}
-      - {{ libxslt }}
+      - {{ mwlib.libxml }}
+      - {{ mwlib.libxslt }}
+      - python-pip
+
+mwlib:
+  pip:
+    - installed
+    - require:
+      - pkg: deps
+
+mrjob==0.2.8:
+  pip:
+    - installed
+    - require:
+      - pkg: deps
